@@ -8,13 +8,16 @@
         <%= title %>
     </title>
     <link rel="stylesheet" href="/css/main.css">
+    <script src="/scripts/navigation.js" defer></script>
 </head>
 
 <body>
     <nav>
-        <ul>
+        <button class="menu-toggle" aria-label="Toggle Navigation"></button>
+        <ul id="nav-bar">
             <li><a href="/">Home</a></li>
             <li><a href="/organizations">Organizations</a></li>
             <li><a href="/projects">Projects</a></li>
+            <li><a href="/categories">Categories</a></li>
         </ul>
     </nav>
