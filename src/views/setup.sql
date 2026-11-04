@@ -6,6 +6,19 @@ CREATE TABLE organization (
     logo_filename VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE projects (
+    project_id SERIAL PRIMARY KEY,
+    organization_id INT NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    description VARCHAR(500) NOT NULL,
+    location VARCHAR(150) NOT NULL,
+    project_date DATE NOT NULL,
+    CONSTRAINT fk_sponsoring_organization
+        FOREIGN KEY (organization_id) 
+        REFERENCES organization (organization_id)
+        ON DELETE CASCADE
+);
+
 INSERT INTO organization (name, description, contact_email, logo_filename) VALUES
 (
     'BrightFuture Builders', 
@@ -24,4 +37,116 @@ INSERT INTO organization (name, description, contact_email, logo_filename) VALUE
     'A volunteer coordination group supporting local charities and service initiatives.', 
     'hello@unityserve.org', 
     'unityserve-logo.png'
+);
+
+INSERT INTO projects (organization_id, title, description, location, project_date) VALUES
+-- BrightFuture Builders Projects
+(
+    (SELECT organization_id FROM organization WHERE name = 'BrightFuture Builders'),
+    'Community Center Roof Solar Upgrade',
+    'Installing solar panels on the community center roof to lower energy expenses and promote clean energy.',
+    'Austin, TX',
+    '2026-06-15'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'BrightFuture Builders'),
+    'Downtown Public Library Accessibility Ramp',
+    'Constructing a modern, ADA-compliant wheelchair access ramp at the main public library entrance.',
+    'Austin, TX',
+    '2026-07-10'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'BrightFuture Builders'),
+    'Riverside Park Eco-Bridge Restoration',
+    'Rebuilding and reinforcing the pedestrian wooden footbridge using sustainable, weather-treated lumber.',
+    'San Antonio, TX',
+    '2026-08-05'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'BrightFuture Builders'),
+    'Low-Income Housing Weatherization Initiative',
+    'Insulating windows and doors for low-income families to improve winter energy efficiency.',
+    'Houston, TX',
+    '2026-09-20'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'BrightFuture Builders'),
+    'Neighborhood Playground Upgrades and Shading',
+    'Building shaded seating structures and installing safe rubber ground padding at the local park.',
+    'Dallas, TX',
+    '2026-10-12'
+),
+
+-- GreenHarvest Growers Projects
+(
+    (SELECT organization_id FROM organization WHERE name = 'GreenHarvest Growers'),
+    'Eastside Community Urban Garden Launch',
+    'Transforming an empty vacant lot into raised vegetable beds for neighborhood families.',
+    'Chicago, IL',
+    '2026-05-18'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'GreenHarvest Growers'),
+    'Rooftop Greenhouse Installation Workshop',
+    'Building a small-scale modular greenhouse to extend the local growing season through autumn.',
+    'Chicago, IL',
+    '2026-06-22'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'GreenHarvest Growers'),
+    'Youth Composting and Soil Science Camp',
+    'An interactive weekend workshop teaching local kids about organic waste composting and soil health.',
+    'Evanston, IL',
+    '2026-07-15'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'GreenHarvest Growers'),
+    'Neighborhood Farmers Market and Nutrition Fair',
+    'Organizing a local produce market showcasing organic crops grown by community members.',
+    'Chicago, IL',
+    '2026-08-30'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'GreenHarvest Growers'),
+    'Winterizing Community Plots and Seed Saving',
+    'Collecting native seeds and preparing garden beds with cover crops for the winter season.',
+    'Chicago, IL',
+    '2026-10-05'
+),
+
+-- UnityServe Volunteers Projects
+(
+    (SELECT organization_id FROM organization WHERE name = 'UnityServe Volunteers'),
+    'Annual Back-to-School Supply Drive',
+    'Collecting and packing backpacks filled with notebooks, pencils, and supplies for local students.',
+    'Denver, CO',
+    '2026-08-10'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'UnityServe Volunteers'),
+    'Citywide Winter Coat and Blanket Distribution',
+    'Gathering warm winter clothing items and distributing them to individuals experiencing homelessness.',
+    'Denver, CO',
+    '2026-11-14'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'UnityServe Volunteers'),
+    'Senior Citizen Digital Literacy Workshop',
+    'Providing one-on-one tech support and training to help senior citizens navigate smartphones and computers.',
+    'Aurora, CO',
+    '2026-06-04'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'UnityServe Volunteers'),
+    'Neighborhood Food Bank Packing Day',
+    'Sorting pantry items and assembling emergency food boxes for local families in need.',
+    'Denver, CO',
+    '2026-07-25'
+),
+(
+    (SELECT organization_id FROM organization WHERE name = 'UnityServe Volunteers'),
+    'Spring Neighborhood Cleanup and Tree Planting',
+    'Cleaning up litter from public spaces and planting native saplings along local walkways.',
+    'Lakewood, CO',
+    '2026-05-09'
 );
