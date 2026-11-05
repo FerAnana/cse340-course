@@ -4,12 +4,10 @@
         <h1>
             <%= title %>
         </h1>
-        <p>This are the categories to serve:</p>
-        <ul>
-            <li>Environmental</li>
-            <li>Educational</li>
-            <li>Community Service</li>
-            <li>Health and Wellness</li>
+        <p>This are the categories for each service project:</p>
+        <ul><% categories.forEach(category => { %>
+            <li><%= category.category_name %></li>
+            <% }); %>
         </ul>
 
     </main>
