@@ -19,6 +19,30 @@ CREATE TABLE projects (
         ON DELETE CASCADE
 );
 
+CREATE TABLE categories (
+    category_id SERIAL PRIMARY KEY,
+    category_name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE project_categories (
+    project_id INT NOT NULL,
+    category_id INT NOT NULL,
+    -- A composite primary key ensures a project can't be assigned the exact same category twice
+    PRIMARY KEY (project_id, category_id),
+    
+    -- Foreign key linking to the projects table
+    CONSTRAINT fk_project
+        FOREIGN KEY (project_id) 
+        REFERENCES projects (project_id) 
+        ON DELETE CASCADE,
+        
+    -- Foreign key linking to the categories table
+    CONSTRAINT fk_category
+        FOREIGN KEY (category_id) 
+        REFERENCES categories (category_id) 
+        ON DELETE CASCADE
+);
+
 INSERT INTO organization (name, description, contact_email, logo_filename) VALUES
 (
     'BrightFuture Builders', 
@@ -149,4 +173,126 @@ INSERT INTO projects (organization_id, title, description, location, project_dat
     'Cleaning up litter from public spaces and planting native saplings along local walkways.',
     'Lakewood, CO',
     '2026-05-09'
+);
+
+-- Step 1: Insert the 3 categories
+INSERT INTO categories (category_name) VALUES
+('Sustainability & Environment'),
+('Community Development'),
+('Education & Support');
+
+-- Step 2: Link every project to at least one category using the junction table
+INSERT INTO project_categories (project_id, category_id) VALUES
+
+-- === BrightFuture Builders Projects ===
+-- Project 1: Solar Upgrade (Sustainability & Community)
+(
+    (SELECT project_id FROM projects WHERE title = 'Community Center Roof Solar Upgrade'),
+    (SELECT category_id FROM categories WHERE category_name = 'Sustainability & Environment')
+),
+(
+    (SELECT project_id FROM projects WHERE title = 'Community Center Roof Solar Upgrade'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
+),
+-- Project 2: Library Ramp (Community)
+(
+    (SELECT project_id FROM projects WHERE title = 'Downtown Public Library Accessibility Ramp'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
+),
+-- Project 3: Eco-Bridge (Sustainability & Community)
+(
+    (SELECT project_id FROM projects WHERE title = 'Riverside Park Eco-Bridge Restoration'),
+    (SELECT category_id FROM categories WHERE category_name = 'Sustainability & Environment')
+),
+(
+    (SELECT project_id FROM projects WHERE title = 'Riverside Park Eco-Bridge Restoration'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
+),
+-- Project 4: Housing Weatherization (Sustainability)
+(
+    (SELECT project_id FROM projects WHERE title = 'Low-Income Housing Weatherization Initiative'),
+    (SELECT category_id FROM categories WHERE category_name = 'Sustainability & Environment')
+),
+-- Project 5: Playground Upgrades (Community)
+(
+    (SELECT project_id FROM projects WHERE title = 'Neighborhood Playground Upgrades and Shading'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
+),
+
+-- === GreenHarvest Growers Projects ===
+-- Project 6: Urban Garden (Sustainability & Community)
+(
+    (SELECT project_id FROM projects WHERE title = 'Eastside Community Urban Garden Launch'),
+    (SELECT category_id FROM categories WHERE category_name = 'Sustainability & Environment')
+),
+(
+    (SELECT project_id FROM projects WHERE title = 'Eastside Community Urban Garden Launch'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
+),
+-- Project 7: Greenhouse (Sustainability)
+(
+    (SELECT project_id FROM projects WHERE title = 'Rooftop Greenhouse Installation Workshop'),
+    (SELECT category_id FROM categories WHERE category_name = 'Sustainability & Environment')
+),
+-- Project 8: Soil Science Camp (Sustainability & Education)
+(
+    (SELECT project_id FROM projects WHERE title = 'Youth Composting and Soil Science Camp'),
+    (SELECT category_id FROM categories WHERE category_name = 'Sustainability & Environment')
+),
+(
+    (SELECT project_id FROM projects WHERE title = 'Youth Composting and Soil Science Camp'),
+    (SELECT category_id FROM categories WHERE category_name = 'Education & Support')
+),
+-- Project 9: Farmers Market (Community & Education)
+(
+    (SELECT project_id FROM projects WHERE title = 'Neighborhood Farmers Market and Nutrition Fair'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
+),
+(
+    (SELECT project_id FROM projects WHERE title = 'Neighborhood Farmers Market and Nutrition Fair'),
+    (SELECT category_id FROM categories WHERE category_name = 'Education & Support')
+),
+-- Project 10: Winterizing Plots (Sustainability)
+(
+    (SELECT project_id FROM projects WHERE title = 'Winterizing Community Plots and Seed Saving'),
+    (SELECT category_id FROM categories WHERE category_name = 'Sustainability & Environment')
+),
+
+-- === UnityServe Volunteers Projects ===
+-- Project 11: School Supply Drive (Education & Community)
+(
+    (SELECT project_id FROM projects WHERE title = 'Annual Back-to-School Supply Drive'),
+    (SELECT category_id FROM categories WHERE category_name = 'Education & Support')
+),
+(
+    (SELECT project_id FROM projects WHERE title = 'Annual Back-to-School Supply Drive'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
+),
+-- Project 12: Coat Distribution (Community)
+(
+    (SELECT project_id FROM projects WHERE title = 'Citywide Winter Coat and Blanket Distribution'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
+),
+-- Project 13: Digital Literacy (Education & Community)
+(
+    (SELECT project_id FROM projects WHERE title = 'Senior Citizen Digital Literacy Workshop'),
+    (SELECT category_id FROM categories WHERE category_name = 'Education & Support')
+),
+(
+    (SELECT project_id FROM projects WHERE title = 'Senior Citizen Digital Literacy Workshop'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
+),
+-- Project 14: Food Bank (Community)
+(
+    (SELECT project_id FROM projects WHERE title = 'Neighborhood Food Bank Packing Day'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
+),
+-- Project 15: Cleanup and Tree Planting (Sustainability & Community)
+(
+    (SELECT project_id FROM projects WHERE title = 'Spring Neighborhood Cleanup and Tree Planting'),
+    (SELECT category_id FROM categories WHERE category_name = 'Sustainability & Environment')
+),
+(
+    (SELECT project_id FROM projects WHERE title = 'Spring Neighborhood Cleanup and Tree Planting'),
+    (SELECT category_id FROM categories WHERE category_name = 'Community Development')
 );
