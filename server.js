@@ -21,8 +21,20 @@ const app = express();
 // Serve static files from the public directory
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'src/views'))
+
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use((req, res, next) => {
+  if (NODE_ENV === 'development') {
+    console.log(`${req.method} ${req.url}`);
+  }
+  next();
+})
+
+app.use((req, res, next) => {
+  res.locals.NODE_ENV = NODE_ENV;
+  next();
+})
 
 /**
  * Routes
@@ -50,7 +62,7 @@ app.get('/projects', async (req, res) => {
 
 app.get('/categories', async (req, res) => {
   const categories = await getAllCategories();
-  console.log(categories); 
+  console.log(categories);
 
   const title = 'Service Categories';
   res.render('categories', { title, categories })
