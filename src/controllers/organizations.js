@@ -8,13 +8,13 @@ const organizationsPage = async (req, res) => {
     res.render('organizations', { title, organizations });
 };
 
-const OrganizationDetailsPage = async (req, res) => {
+const organizationDetailsPage = async (req, res) => {
     const organizationId = req.params.id;
-    const organziationDetails = await getOrganizationDetails(organizationId);
+    const organizationDetails = await getOrganizationDetails(organizationId);
     const projects = await getProjectsByOrganizationId(organizationId);
     const title = 'Organization Details';
 
     res.render('organization', { title, organizationDetails, projects });
 }
 
-export { organizationsPage, OrganizationDetailsPage };
+export { organizationsPage, organizationDetailsPage };

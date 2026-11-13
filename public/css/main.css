@@ -115,11 +115,21 @@ main {
     }
 
     h2 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         color: var(--secondary-color);
-        margin-bottom: 1.25rem;
-        font-weight: 500;
+        margin-bottom: 1rem;
+        font-weight: 600;
         text-align: center;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        text-align: left;
+        border-bottom: 2px solid var(--bg-color);
+        padding-bottom: 0.3rem;
     }
 
     p {
@@ -127,14 +137,30 @@ main {
         color: var(--text-muted);
         margin: 0 auto 1.5rem auto;
         text-align: center;
+        max-width: 650px;
+
+        strong {
+            color: var(--primary-color);
+        }
+    }
+
+    /* Organization Profile Logo Styling */
+    img {
+        max-width: 160px;
+        width: 100%;
+        height: auto;
+        margin: 1rem auto 1.5rem auto;
+        display: block;
+        padding: 0.5rem;
+        background-color: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        object-fit: contain;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 0.03);
     }
 
     .main-logo {
         max-width: 220px;
-        width: 100%;
-        height: auto;
-        margin: 1rem auto;
-        display: block;
         transition: transform 0.3s ease;
 
         &:hover {
@@ -142,7 +168,7 @@ main {
         }
     }
 
-    /* List Item Card Styles (Projects, Categories, Organizations) */
+    /* List & Card Styles (Projects, Categories, Organizations, & Organization Projects) */
     ul {
         list-style: none;
         display: flex;
@@ -169,7 +195,21 @@ main {
                 border-left-color: var(--accent-color);
             }
 
-            /* Organization Logos */
+            /* Make project links fill the card area gracefully */
+            a {
+                text-decoration: none;
+                color: var(--primary-color);
+                font-weight: 600;
+                display: block;
+                width: 100%;
+                transition: color 0.2s ease;
+
+                &:hover {
+                    color: var(--accent-color);
+                }
+            }
+
+            /* Organization Logos inside list items */
             img {
                 width: 56px;
                 height: 56px;
@@ -179,6 +219,8 @@ main {
                 padding: 0.25rem;
                 border: 1px solid var(--border-color);
                 flex-shrink: 0;
+                margin: 0;
+                box-shadow: none;
             }
 
             /* Content spacing for organization rows */
@@ -252,13 +294,21 @@ footer {
         }
 
         h2 {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        h3 {
+            font-size: 1.35rem;
         }
 
         p {
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 650px;
             margin-bottom: 2rem;
+        }
+
+        img {
+            max-width: 180px;
         }
 
         .main-logo {
