@@ -28,4 +28,58 @@ const getProjectsByOrganizationId = async (organizationId) => {
     return result.rows;
 }
 
-export { getAllProjects, getProjectsByOrganizationId };
+const getUpcomingProjects = async (number_of_projects) => {
+    try {
+        const query = `
+            SELECT 
+                p.project_id,
+                p.title,
+                p.description,
+                p.date,
+                p.location,
+                p.organization_id,
+                o.name
+            FROM projects p
+            JOIN organization o ON p.organization_id = o.organization_id
+            WHERE p.date >= CURRENT_DATE
+            ORDER BY p.date ASC
+            LIMIT $1;
+        `;
+
+        const values = [number_of_projects];
+        const result = await db.query(query, values);
+
+        return result.rows;
+    } catch (error) {
+        console.error("Error fetching upcoming projects:", error);
+        throw error;
+    }
+}
+
+const getProjectDetails = async (id) => {
+    try {
+        const query = `
+            SELECT 
+                p.project_id,
+                p.title,
+                p.description,
+                p.date,
+                p.location,
+                p.organization_id,
+                o.name AS organization_name
+            FROM projects p
+            JOIN organization o ON p.organization_id = o.organization_id
+            WHERE p.project_id = $1;
+        `;
+
+        const values = [id];
+        const result = await db.query(query, values);
+
+        return result.rows[0];
+    } catch (error) {
+        console.error("Error fetching project details:", error);
+        throw error;
+    }
+}
+
+export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails };
