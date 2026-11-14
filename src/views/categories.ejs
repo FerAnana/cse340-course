@@ -1,17 +1,16 @@
-<body>
-    <%- include('partials/header') %>
-    <main>
-        <h1>
+<%- include('partials/header') %>
+    <main class="categories-main">
+        <h1 class="page-title">
             <%= title %>
         </h1>
-        <p>This are the categories for each service project:</p>
-        <ul><% categories.forEach(category => { %>
-            <li><%= category.category_name %></li>
+        <p class="section-intro">This are the categories for each service project:</p>
+        <ul id="categories-list" class="card-list">
+            <% categories.forEach(category=> { %>
+                <li class="card-item category-item">
+                    <%= category.category_name %>
+                </li>
             <% }); %>
         </ul>
-
     </main>
     <%- include('partials/footer') %>
-</body>
-
 </html>

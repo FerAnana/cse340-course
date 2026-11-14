@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+    <main class="project-detail-main">
+        <h1 class="page-title">
+            <%= projectDetails.title %>
+        </h1>
+        <h2 class="section-subtitle">Project Details</h2>
+
+        <div class="project-info-card card-item">
+            <p class="project-desc">
+                <%= projectDetails.description %>
+            </p>
+            <div class="project-meta">
+                <span class="meta-date"><strong>Date:</strong>
+                    <%= projectDetails.project_date.toLocaleDateString() %>
+                </span>
+                <span class="meta-location"><strong>Location:</strong>
+                    <%= projectDetails.location %>
+                </span>
+            </div>
+            <div class="project-action">
+                <a class="btn-org-link" href="/organization/<%= projectDetails.organization_id %>">Hosted by <%=
+                        projectDetails.organization_name %></a>
+            </div>
+        </div>
+    </main>
+    <%- include('partials/footer') %>

@@ -1,20 +1,28 @@
 <%- include('partials/header') %>
-<main>
-    <h1><%= title %></h1>
-    <h2>
-        <%= organizationDetails.name %>
-    </h2>
-    <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> Logo" width="200">
-    <p><strong>Description: </strong>
-        <%= organizationDetails.description %>
-    </p>
-    <h3>Projects:</h3>
-    <ul>
-        <% projects.forEach(project => { %>
-            <li><a href="project/<%= project.project_id %>">
-                    <%= project.title %>
-                </a></li>
+<main class="organization-detail-main">
+    <h1 class="page-title"><%= title %></h1>
+    
+    <section class="org-profile-section">
+        <h2 class="org-heading">
+            <%= organizationDetails.name %>
+        </h2>
+        <img class="org-profile-logo" src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> Logo" width="200">
+        <p class="org-description"><strong>Description: </strong>
+            <%= organizationDetails.description %>
+        </p>
+    </section>
+
+    <section class="org-projects-section">
+        <h3 class="subsection-title">Projects:</h3>
+        <ul class="card-list">
+            <% projects.forEach(project => { %>
+                <li class="card-item">
+                    <a class="project-link" href="/project/<%= project.project_id %>">
+                        <%= project.title %>
+                    </a>
+                </li>
             <% }); %>
-    </ul>
+        </ul>
+    </section>
 </main>
 <%- include('partials/footer') %>
