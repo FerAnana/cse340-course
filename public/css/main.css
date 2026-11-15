@@ -1,4 +1,4 @@
-/* =================================================================el */
+/* ================================================================= */
 /* GLOBAL DESIGN TOKENS & BASE STYLES                                   */
 /* ================================================================= */
 :root {
@@ -132,38 +132,40 @@ main {
 
 
     /* ============================================================= */
-    /* 1. HOME PAGE STYLES (index.ejs)                               */
+    /* 1. HOME PAGE STYLES (home.ejs / index.ejs)                    */
     /* ============================================================= */
-    .hero-subtitle {
-        font-size: 1.3rem;
-        color: var(--secondary-color);
-        margin-bottom: 1.25rem;
-        font-weight: 500;
-        text-align: center;
-    }
-
-    .hero-description {
-        font-size: 1rem;
-        color: var(--text-muted);
-        margin: 0 auto 1.5rem auto;
-        text-align: center;
-        max-width: 650px;
-
-        strong {
-            color: var(--primary-color);
+    &.home-main {
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+            text-align: center;
         }
-    }
 
-    .main-logo {
-        max-width: 220px;
-        width: 100%;
-        height: auto;
-        margin: 1rem auto;
-        display: block;
-        transition: transform 0.3s ease;
+        .hero-description {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin: 0 auto 1.5rem auto;
+            text-align: center;
+            max-width: 650px;
 
-        &:hover {
-            transform: scale(1.02);
+            strong {
+                color: var(--primary-color);
+            }
+        }
+
+        .main-logo {
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            margin: 1rem auto;
+            display: block;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.02);
+            }
         }
     }
 
@@ -234,7 +236,7 @@ main {
                 gap: 0.5rem 1rem;
                 width: calc(100% - 72px);
 
-                .org-name {
+                .org-name-link {
                     color: var(--primary-color);
                 }
 
@@ -248,7 +250,7 @@ main {
 
         /* ========================================================= */
         /* 3. SERVICE PROJECTS LIST & DIRECTORY STYLES               */
-        /*    (projects.ejs & projects-index.ejs)                    */
+        /*    (projects.ejs)                                         */
         /* ========================================================= */
         .project-row-item {
             .project-title-link {
@@ -264,7 +266,7 @@ main {
 
 
         /* ========================================================= */
-        /* 4. CATEGORIES PAGE STYLES (categories.ejs)                */
+        /* 4. CATEGORIES INDEX PAGE STYLES (categories.ejs)          */
         /* ========================================================= */
         .category-item {
             font-weight: 600;
@@ -274,160 +276,221 @@ main {
 
 
     /* ============================================================= */
-    /* 5. ORGANIZATION DETAILS PAGE STYLES (organization-detail.ejs) */
+    /* 5. ORGANIZATION DETAILS PAGE STYLES (organization.ejs)        */
     /* ============================================================= */
-    .org-heading {
-        font-size: 1.3rem;
-        color: var(--secondary-color);
-        margin-bottom: 1.25rem;
-        font-weight: 500;
-        text-align: center;
-    }
-
-    .org-description {
-        font-size: 1rem;
-        color: var(--text-muted);
-        margin: 0 auto 1.5rem auto;
-        text-align: center;
-        max-width: 650px;
-
-        strong {
-            color: var(--primary-color);
-        }
-    }
-
-    .org-profile-logo {
-        max-width: 160px;
-        width: 100%;
-        height: auto;
-        margin: 1rem auto 1.5rem auto;
-        display: block;
-        padding: 0.5rem;
-        background-color: var(--bg-color);
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        object-fit: contain;
-    }
-
-
-    /* ============================================================= */
-    /* 6. PROJECT DETAILS PAGE STYLES (project-detail.ejs)           */
-    /* ============================================================= */
-    .section-subtitle {
-        font-size: 1.3rem;
-        color: var(--secondary-color);
-        margin-bottom: 1.25rem;
-        font-weight: 500;
-        text-align: center;
-    }
-
-    .project-info-card {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.25rem;
-        padding: 1.5rem;
-        border-left-color: var(--accent-color);
-
-        .project-desc {
-            text-align: left;
-            color: var(--text-muted);
-            margin: 0;
-            max-width: 100%;
+    &.organization-detail-main {
+        .org-heading {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+            text-align: center;
         }
 
-        .project-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            font-size: 0.95rem;
+        .org-description {
+            font-size: 1rem;
             color: var(--text-muted);
+            margin: 0 auto 1.5rem auto;
+            text-align: center;
+            max-width: 650px;
 
             strong {
                 color: var(--primary-color);
             }
         }
 
-        .project-action {
+        .org-profile-logo {
+            max-width: 160px;
             width: 100%;
+            height: auto;
+            margin: 1rem auto 1.5rem auto;
+            display: block;
+            padding: 0.5rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            object-fit: contain;
+        }
+    }
+
+
+    /* ============================================================= */
+    /* 6. PROJECT DETAILS PAGE STYLES (project.ejs)                  */
+    /* ============================================================= */
+    &.project-detail-main {
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
             text-align: center;
-            margin-top: 0.5rem;
+        }
 
-            .btn-org-link {
-                display: inline-block;
-                padding: 0.75rem 1.5rem;
-                background-color: var(--secondary-color);
-                color: #ffffff;
-                text-decoration: none;
-                border-radius: 6px;
-                font-weight: 600;
-                transition: background-color 0.2s ease, transform 0.2s ease;
+        .project-info-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            border-left-color: var(--accent-color);
 
-                &:hover {
-                    background-color: var(--accent-color);
-                    transform: translateY(-2px);
+            .project-desc {
+                text-align: left;
+                color: var(--text-muted);
+                margin: 0;
+                max-width: 100%;
+            }
+
+            .project-meta {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                font-size: 0.95rem;
+                color: var(--text-muted);
+
+                strong {
+                    color: var(--primary-color);
+                }
+            }
+
+            /* --- Categories Horizontal Flex List Styling --- */
+            .project-categories {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+
+                strong {
+                    color: var(--primary-color);
+                    font-size: 0.95rem;
+                }
+
+                .category-tags-list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+
+                    .category-tag-link {
+                        display: inline-block;
+                        padding: 0.35rem 0.75rem;
+                        background-color: var(--card-bg);
+                        border: 1px solid var(--border-color);
+                        border-radius: 6px;
+                        color: var(--secondary-color);
+                        font-size: 0.9rem;
+                        font-weight: 500;
+                        text-decoration: none;
+                        transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+                        &:hover {
+                            background-color: var(--secondary-color);
+                            color: #ffffff;
+                            border-color: var(--secondary-color);
+                        }
+                    }
+                }
+            }
+
+            .project-action {
+                width: 100%;
+                text-align: center;
+                margin-top: 0.5rem;
+
+                .btn-org-link {
+                    display: inline-block;
+                    padding: 0.75rem 1.5rem;
+                    background-color: var(--secondary-color);
+                    color: #ffffff;
+                    text-decoration: none;
+                    border-radius: 6px;
+                    font-weight: 600;
+                    transition: background-color 0.2s ease, transform 0.2s ease;
+
+                    &:hover {
+                        background-color: var(--accent-color);
+                        transform: translateY(-2px);
+                    }
                 }
             }
         }
     }
-}
 
-/* ================================================================= */
-/* 7. ERROR PAGES STYLES (404.ejs & 500.ejs)                         */
-/* ================================================================= */
-main.error-main {
-    text-align: center;
 
-    .error-card {
-        padding: 1rem;
-
-        .error-message {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .error-action {
+    /* ============================================================= */
+    /* 7. CATEGORY DETAILS PAGE STYLES (category.ejs)                */
+    /* ============================================================= */
+    &.category-detail-main {
+        .category-profile-section {
+            text-align: center;
             margin-bottom: 1.5rem;
-            font-size: 1rem;
 
-            .home-link {
+            .category-heading {
+                font-size: 1.3rem;
                 color: var(--secondary-color);
-                font-weight: 600;
-                text-decoration: none;
-
-                &:hover {
-                    color: var(--accent-color);
-                    text-decoration: underline;
-                }
+                font-weight: 500;
+                text-align: center;
             }
         }
+    }
 
-        .error-details {
-            margin-top: 2rem;
-            text-align: left;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+
+    /* ============================================================= */
+    /* 8. ERROR PAGES STYLES (404.ejs & 500.ejs)                     */
+    /* ============================================================= */
+    &.error-main {
+        text-align: center;
+
+        .error-card {
             padding: 1rem;
 
-            .error-summary {
-                font-weight: 600;
-                color: var(--accent-color);
-                cursor: pointer;
-                margin-bottom: 0.5rem;
+            .error-message {
+                font-size: 1.1rem;
+                color: var(--text-muted);
+                margin-bottom: 1rem;
             }
 
-            .error-pre {
-                background-color: var(--primary-color);
-                color: #cbd5e1;
-                padding: 0.75rem;
-                border-radius: 6px;
-                font-size: 0.85rem;
-                overflow-x: auto;
-                margin-top: 0.5rem;
-                white-space: pre-wrap;
-                word-break: break-all;
+            .error-action {
+                margin-bottom: 1.5rem;
+                font-size: 1rem;
+
+                .home-link {
+                    color: var(--secondary-color);
+                    font-weight: 600;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: var(--accent-color);
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .error-details {
+                margin-top: 2rem;
+                text-align: left;
+                background-color: var(--bg-color);
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                padding: 1rem;
+
+                .error-summary {
+                    font-weight: 600;
+                    color: var(--accent-color);
+                    cursor: pointer;
+                    margin-bottom: 0.5rem;
+                }
+
+                .error-pre {
+                    background-color: var(--primary-color);
+                    color: #cbd5e1;
+                    padding: 0.75rem;
+                    border-radius: 6px;
+                    font-size: 0.85rem;
+                    overflow-x: auto;
+                    margin-top: 0.5rem;
+                    white-space: pre-wrap;
+                    word-break: break-all;
+                }
             }
         }
     }
@@ -490,30 +553,50 @@ footer {
             font-size: 2.5rem;
         }
 
-        .hero-subtitle,
-        .section-subtitle,
-        .org-heading {
-            font-size: 1.5rem;
+        &.home-main {
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            .hero-description {
+                font-size: 1.1rem;
+                max-width: 650px;
+                margin-bottom: 2rem;
+            }
+            .main-logo {
+                max-width: 280px;
+            }
         }
 
         .subsection-title {
             font-size: 1.35rem;
         }
 
-        .hero-description,
-        .section-intro,
-        .org-description {
-            font-size: 1.1rem;
-            max-width: 650px;
-            margin-bottom: 2rem;
+        &.organization-detail-main {
+            .org-heading {
+                font-size: 1.5rem;
+            }
+            .org-description {
+                font-size: 1.1rem;
+                max-width: 650px;
+                margin-bottom: 2rem;
+            }
+            .org-profile-logo {
+                max-width: 180px;
+            }
         }
 
-        .main-logo {
-            max-width: 280px;
+        &.project-detail-main {
+            .section-subtitle {
+                font-size: 1.5rem;
+            }
         }
 
-        .org-profile-logo {
-            max-width: 180px;
+        &.category-detail-main {
+            .category-profile-section {
+                .category-heading {
+                    font-size: 1.5rem;
+                }
+            }
         }
 
         .card-list {

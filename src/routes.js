@@ -2,6 +2,7 @@ import express from 'express';
 
 import { indexPage } from './controllers/index.js';
 import { categoriesPage } from './controllers/categories.js';
+import { categoryDetailsPage } from './controllers/categories.js';
 import { organizationsPage } from './controllers/organizations.js';
 import { organizationDetailsPage } from './controllers/organizations.js';
 import { projectsPage } from './controllers/projects.js';
@@ -12,14 +13,12 @@ const router = express.Router();
 
 router.get('/', indexPage);
 router.get('/organizations', organizationsPage);
+router.get('/organization/:id', organizationDetailsPage);
 router.get('/projects', projectsPage);
 router.get('/project/:id', projectDetailsPage);
 router.get('/categories', categoriesPage);
-
+router.get('/category/:id', categoryDetailsPage);
 // error-handling routes
 router.get('/test-error', errorsPage);
-
-// Route for organization details page
-router.get('/organization/:id', organizationDetailsPage);
 
 export default router;

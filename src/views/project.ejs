@@ -17,6 +17,19 @@
                     <%= projectDetails.location %>
                 </span>
             </div>
+
+            <!-- Categories Horizontal Flex List -->
+            <div class="project-categories">
+                <strong>Categories:</strong>
+                <div class="category-tags-list">
+                    <% categories.forEach(category => { %>
+                        <a class="category-tag-link" href="/category/<%= category.category_id %>">
+                            <%= category.category_name %>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+
             <div class="project-action">
                 <a class="btn-org-link" href="/organization/<%= projectDetails.organization_id %>">Hosted by <%=
                         projectDetails.organization_name %></a>
