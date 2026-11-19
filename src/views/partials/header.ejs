@@ -21,3 +21,18 @@
             <li><a href="/categories">Categories</a></li>
         </ul>
     </nav>
+    <% if (typeof flash === 'function') { %>
+        <% const messages = flash(); %>
+        <% Object.keys(messages).forEach(type => { %>
+            <% if (messages[type].length > 0) { %>
+                <div class="flash-messages-container">
+                    <% messages[type].forEach(msg => { %>
+                        <div class="alert <%= type %>">
+                            <span class="flash-text"><%= msg %></span>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } %>
+        <% }); %>
+    <% } %>
+    <% console.log('Current Flash Messages:', typeof flash === 'function' ? flash() : 'flash not available'); %>
