@@ -596,44 +596,58 @@ main {
     /* 10. FLASH MESSAGES STYLES                                     */
     /* ============================================================= */
     /* Flash message styles */
+    /* Flash messages container */
     .flash-messages-container {
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
+        max-width: 820px;
+        width: calc(100% - 2rem);
         margin: 1rem auto;
-        width: 90%;
-        max-width: 800px;
     }
 
+    /* Base alert card */
     .alert {
-        padding: 15px;
-        margin-bottom: 20px;
-        border: 1px solid transparent;
-        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.9rem 1.25rem;
+        border-radius: 8px;
+        border-left: 5px solid transparent;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.95rem;
+        line-height: 1.45;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
     }
 
+    .flash-text {
+        font-family: 'Montserrat', 'Open Sans', sans-serif;
+        font-weight: 500;
+    }
+
+    /* Type variants */
     .alert.success {
-        color: #155724;
-        background-color: #d4edda;
-        border-color: #c3e6cb;
+        background-color: #edf7ed;
+        color: #1e4620;
+        border-color: #2e7d32;
     }
 
     .alert.error {
-        color: #721c24;
-        background-color: #f8d7da;
-        border-color: #f5c6cb;
+        background-color: #fdecea;
+        color: #611a15;
+        border-color: #d32f2f;
     }
 
     .alert.warning {
-        color: #856404;
-        background-color: #fff3cd;
-        border-color: #ffeeba;
+        background-color: #fff8e6;
+        color: #664d03;
+        border-color: #ed6c02;
     }
 
     .alert.info {
-        color: #0c5460;
-        background-color: #d1ecf1;
-        border-color: #bee5eb;
+        background-color: #e8f4fd;
+        color: #0d3c61;
+        border-color: #0288d1;
     }
 }
 
