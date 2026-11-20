@@ -3,9 +3,12 @@
     <h1 class="page-title"><%= title %></h1>
     
     <section class="org-profile-section">
-        <h2 class="org-heading">
-            <%= organizationDetails.name %>
-        </h2>
+        <div class="org-profile-header">
+            <h2 class="org-heading">
+                <%= organizationDetails.name %>
+            </h2>
+            <a class="edit-org-btn" href="/edit-organization/<%= organizationDetails.organization_id %>">Edit</a>
+        </div>
         <img class="org-profile-logo" src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> Logo" width="200">
         <p class="org-description"><strong>Description: </strong>
             <%= organizationDetails.description %>

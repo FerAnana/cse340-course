@@ -55,4 +55,27 @@ const createOrganization = async (name, description, contactEmail, logoFilename)
     return result.rows[0].organization_id;
 };
 
-export { getAllOrganizations, getOrganizationDetails, createOrganization };
+const updateOrganization = async (id, name, description, contactEmail, logoFilename) => {
+    try {
+        const query = `
+            UPDATE public.organization
+            SET 
+                name = $2,
+                description = $3,
+                contact_email = $4,
+                logo_filename = $5
+            WHERE organization_id = $1
+            RETURNING *;
+        `;
+
+        const queryParams = [id, name, description, contactEmail, logoFilename];
+        const result = await db.query(query, queryParams);
+
+        return result.rows[0];
+    } catch (error) {
+        console.error("Error updating organization:", error);
+        throw error;
+    }
+};
+
+export { getAllOrganizations, getOrganizationDetails, createOrganization, updateOrganization };

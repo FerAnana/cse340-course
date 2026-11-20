@@ -101,6 +101,58 @@ nav {
 }
 
 /* ================================================================= */
+/* FLASH MESSAGES STYLES                                             */
+/* ================================================================= */
+.flash-messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 800px;
+    width: 90%;
+    margin: 1rem auto 0 auto;
+}
+
+.alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.25rem;
+    border-radius: 8px;
+    border-left: 5px solid transparent;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.flash-text {
+    font-weight: 600;
+}
+
+.alert.success {
+    background-color: #edf7ed;
+    color: #1e4620;
+    border-color: #2e7d32;
+}
+
+.alert.error {
+    background-color: #fdecea;
+    color: #611a15;
+    border-color: #d32f2f;
+}
+
+.alert.warning {
+    background-color: #fff8e6;
+    color: #664d03;
+    border-color: #ed6c02;
+}
+
+.alert.info {
+    background-color: #e8f4fd;
+    color: #0d3c61;
+    border-color: #0288d1;
+}
+
+/* ================================================================= */
 /* MAIN CONTENT CONTAINER & PAGE-SPECIFIC COMPONENTS                 */
 /* ================================================================= */
 main {
@@ -279,12 +331,40 @@ main {
     /* 5. ORGANIZATION DETAILS PAGE STYLES (organization.ejs)        */
     /* ============================================================= */
     &.organization-detail-main {
+        .org-profile-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            min-height: 2.5rem;
+        }
+
         .org-heading {
             font-size: 1.3rem;
             color: var(--secondary-color);
-            margin-bottom: 1.25rem;
+            margin: 0;
             font-weight: 500;
             text-align: center;
+        }
+
+        .edit-org-btn {
+            position: absolute;
+            right: 0;
+            display: inline-block;
+            padding: 0.5rem 1.1rem;
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+
+            &:hover {
+                background-color: var(--accent-color);
+                transform: translateY(-2px);
+            }
         }
 
         .org-description {
@@ -590,64 +670,6 @@ main {
                 }
             }
         }
-    }
-
-    /* ============================================================= */
-    /* 10. FLASH MESSAGES STYLES                                     */
-    /* ============================================================= */
-    /* Flash message styles */
-    /* Flash messages container */
-    .flash-messages-container {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        max-width: 820px;
-        width: calc(100% - 2rem);
-        margin: 1rem auto;
-    }
-
-    /* Base alert card */
-    .alert {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.9rem 1.25rem;
-        border-radius: 8px;
-        border-left: 5px solid transparent;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 0.95rem;
-        line-height: 1.45;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
-    }
-
-    .flash-text {
-        font-family: 'Montserrat', 'Open Sans', sans-serif;
-        font-weight: 500;
-    }
-
-    /* Type variants */
-    .alert.success {
-        background-color: #edf7ed;
-        color: #1e4620;
-        border-color: #2e7d32;
-    }
-
-    .alert.error {
-        background-color: #fdecea;
-        color: #611a15;
-        border-color: #d32f2f;
-    }
-
-    .alert.warning {
-        background-color: #fff8e6;
-        color: #664d03;
-        border-color: #ed6c02;
-    }
-
-    .alert.info {
-        background-color: #e8f4fd;
-        color: #0d3c61;
-        border-color: #0288d1;
     }
 }
 
