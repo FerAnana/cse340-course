@@ -60,26 +60,21 @@ const newProjectForm = async (req, res) => {
     res.render('new-project', { title, organizations });
 }
 
-const processNewProjectForm = async (req, res, next) => {
-    try {
-        const results = validationResult(req);
-        if (!results.isEmpty()) {
-            results.array().forEach((error) => {
-                req.flash('error', error.msg);
-            });
+const processNewProjectForm = async (req, res) => {
+    const results = validationResult(req);
+    if (!results.isEmpty()) {
+        results.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
 
-            return res.redirect('/new-project');
-        }
-
-        const { organizationId, title, description, location, date } = req.body;
-        await createProject(organizationId, title, description, location, date);
-
-        req.flash('success', 'Project created successfully!');
-        return res.redirect('/projects');
-    } catch (error) {
-        console.error('Error processing new project form:', error);
-        return next(error);
+        return res.redirect('/new-project');
     }
+
+    const { organizationId, title, description, location, date } = req.body;
+    await createProject(organizationId, title, description, location, date);
+
+    req.flash('success', 'Project created successfully!');
+    res.redirect('/projects');
 };
 
 export { projectsPage, projectDetailsPage, newProjectForm, processNewProjectForm, projectValidation };

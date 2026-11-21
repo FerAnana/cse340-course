@@ -18,7 +18,7 @@ router.post('/edit-organization/:id', organizationValidation, processEditOrganiz
 router.get('/projects', projectsPage);
 router.get('/project/:id', projectDetailsPage);
 router.get('/new-project', newProjectForm);
-router.post('/new-project', processNewProjectForm, projectValidation);
+router.post('/new-project', projectValidation, processNewProjectForm);
 router.get('/categories', categoriesPage);
 router.get('/category/:id', categoryDetailsPage);
 // error-handling routes
