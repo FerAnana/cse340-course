@@ -472,9 +472,34 @@ main {
             }
 
             .project-action {
+                position: relative;
                 width: 100%;
-                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 2.75rem;
                 margin-top: 0.5rem;
+
+                .edit-categories-link {
+                    position: absolute;
+                    left: 0;
+                    display: inline-block;
+                    padding: 0.4rem 0.85rem;
+                    background-color: var(--accent-color);
+                    color: #ffffff;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 0.825rem;
+                    font-weight: 600;
+                    text-decoration: none;
+                    transition: background-color 0.2s ease, transform 0.2s ease;
+
+                    &:hover {
+                        background-color: #ea580c;
+                        color: #ffffff;
+                        transform: translateY(-2px);
+                    }
+                }
 
                 .btn-org-link {
                     display: inline-block;
@@ -489,6 +514,15 @@ main {
                     &:hover {
                         background-color: var(--accent-color);
                         transform: translateY(-2px);
+                    }
+                }
+
+                @media (max-width: 600px) {
+                    flex-direction: column-reverse;
+                    gap: 0.75rem;
+
+                    .edit-categories-link {
+                        position: static;
                     }
                 }
             }
@@ -720,6 +754,73 @@ main {
 
                 textarea {
                     resize: vertical;
+                }
+            }
+
+            .form-action {
+                text-align: center;
+                margin-top: 1rem;
+
+                .btn-submit {
+                    display: inline-block;
+                    width: 100%;
+                    padding: 0.75rem 1.5rem;
+                    background-color: var(--secondary-color);
+                    color: #ffffff;
+                    border: none;
+                    border-radius: 6px;
+                    font-weight: 600;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    transition: background-color 0.2s ease, transform 0.2s ease;
+
+                    &:hover {
+                        background-color: var(--accent-color);
+                        transform: translateY(-2px);
+                    }
+                }
+            }
+        }
+    }
+
+    /* ============================================================= */
+    /* 11. ASSIGN CATEGORIES FORM PAGE STYLES (assign-categories.ejs) */
+    /* ============================================================= */
+    &.assign-categories-main {
+        .styled-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+
+            .checkbox-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: left;
+                background-color: var(--bg-color);
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                padding: 1rem 1.25rem;
+
+                .checkbox-label {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.65rem;
+                    font-weight: 600;
+                    color: var(--primary-color);
+                    font-size: 0.95rem;
+                    cursor: pointer;
+
+                    input[type="checkbox"] {
+                        width: 18px;
+                        height: 18px;
+                        accent-color: var(--secondary-color);
+                        cursor: pointer;
+                    }
                 }
             }
 
