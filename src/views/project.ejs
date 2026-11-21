@@ -1,43 +1,46 @@
 <%- include('partials/header') %>
-<main class="project-detail-main">
-    <h1 class="page-title">
-        <%= projectDetails.title %>
-    </h1>
-    <h2 class="section-subtitle">Project Details</h2>
+    <main class="project-detail-main">
+        <h1 class="page-title">
+            <%= projectDetails.title %>
+        </h1>
+        <h2 class="section-subtitle">Project Details</h2>
 
-    <div class="project-info-card card-item">
-        <p class="project-desc">
-            <%= projectDetails.description %>
-        </p>
-        <div class="project-meta">
-            <span class="meta-date"><strong>Date:</strong>
-                <%= projectDetails.project_date.toLocaleDateString() %>
-            </span>
-            <span class="meta-location"><strong>Location:</strong>
-                <%= projectDetails.location %>
-            </span>
-        </div>
+        <div class="project-info-card card-item">
+            <p class="project-desc">
+                <%= projectDetails.description %>
+            </p>
+            <div class="project-meta">
+                <span class="meta-date"><strong>Date:</strong>
+                    <%= projectDetails.project_date.toLocaleDateString() %>
+                </span>
+                <span class="meta-location"><strong>Location:</strong>
+                    <%= projectDetails.location %>
+                </span>
+            </div>
 
-        <!-- Categories Horizontal Flex List -->
-        <div class="project-categories">
-            <strong>Categories:</strong>
-            <div class="category-tags-list">
-                <% categories.forEach(category => { %>
-                    <a class="category-tag-link" href="/category/<%= category.category_id %>">
-                        <%= category.category_name %>
-                    </a>
-                <% }); %>
+            <!-- Categories Horizontal Flex List -->
+            <div class="project-categories">
+                <strong>Categories:</strong>
+                <div class="category-tags-list">
+                    <% categories.forEach(category=> { %>
+                        <a class="category-tag-link" href="/category/<%= category.category_id %>">
+                            <%= category.category_name %>
+                        </a>
+                        <% }); %>
+                </div>
+            </div>
+
+            <div class="project-action">
+                <a class="edit-categories-link" href="/assign-categories/<%= projectDetails.project_id %>">
+                    Edit Categories
+                </a>
+                <a class="btn-org-link" href="/organization/<%= projectDetails.organization_id %>">
+                    Hosted by <%= projectDetails.organization_name %>
+                </a>
+                <a class="edit-projects-link" href="/edit-project/<%= projectDetails.project_id %>">
+                    Edit Project
+                </a>
             </div>
         </div>
-
-        <div class="project-action">
-            <a class="edit-categories-link" href="/assign-categories/<%= projectDetails.project_id %>">
-                Edit Categories
-            </a>
-            <a class="btn-org-link" href="/organization/<%= projectDetails.organization_id %>">
-                Hosted by <%= projectDetails.organization_name %>
-            </a>
-        </div>
-    </div>
-</main>
-<%- include('partials/footer') %>
+    </main>
+    <%- include('partials/footer') %>

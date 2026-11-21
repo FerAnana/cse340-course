@@ -480,9 +480,9 @@ main {
                 min-height: 2.75rem;
                 margin-top: 0.5rem;
 
-                .edit-categories-link {
+                .edit-categories-link,
+                .edit-projects-link {
                     position: absolute;
-                    left: 0;
                     display: inline-block;
                     padding: 0.4rem 0.85rem;
                     background-color: var(--accent-color);
@@ -501,6 +501,14 @@ main {
                     }
                 }
 
+                .edit-categories-link {
+                    left: 0;
+                }
+
+                .edit-projects-link {
+                    right: 0;
+                }
+
                 .btn-org-link {
                     display: inline-block;
                     padding: 0.75rem 1.5rem;
@@ -517,11 +525,16 @@ main {
                     }
                 }
 
-                @media (max-width: 600px) {
-                    flex-direction: column-reverse;
+                @media (max-width: 680px) {
+                    flex-direction: column;
                     gap: 0.75rem;
 
-                    .edit-categories-link {
+                    .btn-org-link {
+                        order: -1;
+                    }
+
+                    .edit-categories-link,
+                    .edit-projects-link {
                         position: static;
                     }
                 }
