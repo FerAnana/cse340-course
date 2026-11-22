@@ -3,9 +3,9 @@
         <h1 class="page-title">
             <%= title %>
         </h1>
-        <p class="section-intro">This are the categories for each service project:</p>
+        <p class="section-intro">These are the categories for each service project:</p>
         <ul id="categories-list" class="card-list">
-            <% categories.forEach(category=> { %>
+            <% categories.forEach(category => { %>
                 <li class="card-item category-item">
                     <a class="category-link" href="/category/<%= category.category_id %>">
                         <%= category.category_name %>
@@ -13,6 +13,8 @@
                 </li>
             <% }); %>
         </ul>
+        <div class="page-action-footer">
+            <a class="btn-action-link" href="/new-category">Create category</a>
+        </div>
     </main>
-    <%- include('partials/footer') %>
-</html>
+<%- include('partials/footer') %>
