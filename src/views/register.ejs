@@ -1,23 +1,26 @@
 <%- include('partials/header.ejs') %>
-    <main>
-        <h1>User registration</h1>
-        <form action="/register" method="POST">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" maxlength="100" required />
-            </div>
+<main class="auth-main register-main">
+    <h1 class="page-title">User registration</h1>
 
-            <div class="form-group">
-                <label for="email">Email (Username)</label>
-                <input type="email" id="email" name="email" required />
-            </div>
+    <form class="styled-form" action="/register" method="POST">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" maxlength="100" required />
+        </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required />
-            </div>
-            <button type="submit">Register</button>
-        </form>
-    </main>
+        <div class="form-group">
+            <label for="email">Email (Username)</label>
+            <input type="email" id="email" name="email" required />
+        </div>
 
-    <%- include('partials/footer') %>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+        </div>
+
+        <div class="form-action">
+            <button class="btn-submit" type="submit">Register</button>
+        </div>
+    </form>
+</main>
+<%- include('partials/footer') %>
