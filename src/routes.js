@@ -4,7 +4,7 @@ import { indexPage } from './controllers/index.js';
 import { categoriesPage, categoryDetailsPage, assignCategoriesForm, processAssignCategoriesForm, newCategoryForm, processNewCategoryForm, editCategoryForm, categoryValidation, processEditCategoryForm } from './controllers/categories.js';
 import { newOrganizationForm, organizationsPage, processNewOrganizationForm, organizationDetailsPage, organizationValidation, editOrganizationForm, processEditOrganizationForm } from './controllers/organizations.js';
 import { projectsPage, projectDetailsPage, processNewProjectForm, newProjectForm, projectValidation, editProjectForm, processEditProjectForm } from './controllers/projects.js';
-import { userRegistrationForm, processUserRegistrationForm } from './controllers/users.js';
+import { userRegistrationForm, processUserRegistrationForm, loginForm, processLoginForm, processLogout, loginValidation, registerValidation } from './controllers/users.js';
 import { errorsPage } from './controllers/errors.js';
 
 const router = express.Router();
@@ -39,7 +39,12 @@ router.post('/assign-categories/:projectId', processAssignCategoriesForm);
 
 // Registration routes
 router.get('/register', userRegistrationForm);
-router.post('/register', processUserRegistrationForm);
+router.post('/register', registerValidation, processUserRegistrationForm);
+
+// Login/logout routes
+router.get('/login', loginForm);
+router.post('/login', loginValidation, processLoginForm);
+router.get('/logout', processLogout);
 
 // error-handling routes
 router.get('/test-error', errorsPage);
