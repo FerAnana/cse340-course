@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+<main class="dashboard-main">
+    <h1 class="page-title">
+        <%= title %>
+    </h1>
+    <h2 class="section-subtitle">Your Dashboard</h2>
+
+    <div class="dashboard-card card-item">
+        <p class="dashboard-detail">
+            <strong>Name:</strong> <%= user.name %>
+        </p>
+        <p class="dashboard-detail">
+            <strong>Username:</strong> <%= user.email %>
+        </p>
+    </div>
+</main>
+<%- include('partials/footer') %>

@@ -1,12 +1,18 @@
 <%- include('partials/header') %>
-    <main class="home-main">
-        <h1 class="page-title">
-            <%= title %>
-        </h1>
-        <h2 class="hero-subtitle">Welcome to the CSE 340 Service Network!</h2>
-        <p class="hero-description">Our mission is to promote service across the world by connecting volunteers with service opportunities in their community.</p>
+<main class="home-main">
+    <h1 class="page-title">
+        <%= title %>
+    </h1>
+    <h2 class="hero-subtitle">Welcome to the CSE 340 Service Network!</h2>
+    <p class="hero-description">Our mission is to promote service across the world by connecting volunteers with
+        service opportunities in their community.</p>
 
-        <img class="main-logo" src="images/cse340-service-network.png" alt="CSE 340 Service Network Logo">
-    </main>
-    <%- include('partials/footer') %>
-</html>
+    <img class="main-logo" src="images/cse340-service-network.png" alt="CSE 340 Service Network Logo">
+
+    <% if (isLoggedIn) { %>
+        <div class="home-dashboard-action">
+            <a class="btn-dashboard-link" href="/dashboard">My Dashboard</a>
+        </div>
+    <% } %>
+</main>
+<%- include('partials/footer') %>

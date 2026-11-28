@@ -4,7 +4,7 @@ import { indexPage } from './controllers/index.js';
 import { categoriesPage, categoryDetailsPage, assignCategoriesForm, processAssignCategoriesForm, newCategoryForm, processNewCategoryForm, editCategoryForm, categoryValidation, processEditCategoryForm } from './controllers/categories.js';
 import { newOrganizationForm, organizationsPage, processNewOrganizationForm, organizationDetailsPage, organizationValidation, editOrganizationForm, processEditOrganizationForm } from './controllers/organizations.js';
 import { projectsPage, projectDetailsPage, processNewProjectForm, newProjectForm, projectValidation, editProjectForm, processEditProjectForm } from './controllers/projects.js';
-import { userRegistrationForm, processUserRegistrationForm, loginForm, processLoginForm, processLogout, loginValidation, registerValidation } from './controllers/users.js';
+import { userRegistrationForm, processUserRegistrationForm, loginForm, processLoginForm, processLogout, loginValidation, registerValidation, requireLogin, dashboard } from './controllers/users.js';
 import { errorsPage } from './controllers/errors.js';
 
 const router = express.Router();
@@ -45,6 +45,9 @@ router.post('/register', registerValidation, processUserRegistrationForm);
 router.get('/login', loginForm);
 router.post('/login', loginValidation, processLoginForm);
 router.get('/logout', processLogout);
+
+// Dashboard route
+router.get('/dashboard', requireLogin, dashboard);
 
 // error-handling routes
 router.get('/test-error', errorsPage);
